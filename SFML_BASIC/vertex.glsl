@@ -1,3 +1,4 @@
+
 void main()
 {
 	vec3 normal, lightDir;
@@ -14,7 +15,7 @@ void main()
 	NdotL = max(dot(normal, lightDir), 0.0);
 	
 	vec4 cameraDir=-pointEyeSpace;
-	vec4 halfVector=normalize((lightDir+ cameraDir));
+	vec3 halfVector=normalize((lightDir + cameraDir)).xyz;
 	
 	if (NdotL > 0.0) {
 

@@ -20,6 +20,7 @@
  
 #include "SFML/Graphics.hpp" 
 #include "SFML/OpenGL.hpp" 
+#include <GL/glu.h>
 #include <iostream> 
   
  
@@ -28,7 +29,7 @@
 ////////////////////////////////////////////////////////////
 ///Entrypoint of application 
 //////////////////////////////////////////////////////////// 
-void Draw_Cuboid(float,float,float);
+
 
 
 int main() 
@@ -83,6 +84,7 @@ int main()
 	glLoadIdentity();
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+	
 
 
 	GLfloat light_color[]={1.0, 1.0, 1.0, 1.0};
