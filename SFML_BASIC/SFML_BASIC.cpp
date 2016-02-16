@@ -101,14 +101,14 @@ int main()
  
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);   // set position
 
-
+	
 	sf::Shader shader;
 	if(!shader.loadFromFile("vertex.glsl","pixel.glsl")){
 		char c;
 		std::cin >>c;
         exit(1);
     }
-
+	
 
     // Start game loop 
     while (App.isOpen()) 

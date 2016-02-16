@@ -1,21 +1,25 @@
+#version 120
 
 void main()
 {
+	
 	vec3 normal, lightDir;
 	vec4 diffuse, ambient, globalAmbient;
 	float NdotL, NdotHV;
 	vec4 specular=vec4(0,0,0,0);
 
 	normal = normalize(gl_NormalMatrix * gl_Normal);
-
+	
 	vec4 pointEyeSpace=(gl_ModelViewMatrix*gl_Vertex);
 
 	lightDir = normalize(vec3(gl_LightSource[0].position)-pointEyeSpace.xyz);
-
+	
 	NdotL = max(dot(normal, lightDir), 0.0);
 	
 	vec4 cameraDir=-pointEyeSpace;
-	vec3 halfVector=normalize((lightDir + cameraDir)).xyz;
+	
+	//vec3 halfVector=normalize(lightDir + cameraDir).xyz;
+	vec3 halfVector=normalize(lightDir + cameraDir.xyz);
 	
 	if (NdotL > 0.0) {
 
@@ -27,6 +31,7 @@ void main()
 	}
 	
 	gl_FrontColor =  NdotL * diffuse +specular ;
-
+	
 	gl_Position = ftransform();
+	//gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
 }
